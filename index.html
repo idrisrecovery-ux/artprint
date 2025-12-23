@@ -230,14 +230,14 @@
         .hero h1 { font-size: 3rem; margin-bottom: 20px; color: var(--dark-blue); }
         .hero p { font-size: 1.2rem; color: #555; max-width: 600px; margin: 0 auto 40px auto; }
         
-        /* --- YENİ DARK STYLE BUTTON --- */
+        /* --- DÜZƏLDİLMİŞ BUTTON STİLİ --- */
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
             background: #101820; /* Tünd fon */
             color: white;
             font-weight: bold;
-            border-radius: 5px; /* Daha kəskin künclər */
+            border-radius: 5px; 
             font-size: 1.1rem;
             border: none;
             cursor: pointer;
@@ -246,11 +246,11 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease; /* Tez reaksiya versin */
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            white-space: nowrap; /* Bu kod yazının qırılmasının qarşısını alır */
         }
 
-        /* Düymə hover effekti (Sürüşən gradient) */
         .cta-button::before {
             content: '';
             position: absolute;
@@ -260,14 +260,22 @@
             transition: 0.4s;
         }
 
-        .cta-button:hover {
-            color: white;
-            box-shadow: 0 15px 25px rgba(236, 0, 140, 0.4);
-            transform: translateY(-3px);
+        /* --- SADECE KOMPÜTERDƏ (MOUSE İLƏ) HOVER İŞLƏSİN --- */
+        @media (hover: hover) {
+            .cta-button:hover {
+                color: white;
+                box-shadow: 0 15px 25px rgba(236, 0, 140, 0.4);
+                transform: translateY(-3px);
+            }
+            .cta-button:hover::before {
+                width: 100%;
+            }
         }
 
-        .cta-button:hover::before {
-            width: 100%;
+        /* --- MOBİL ÜÇÜN ACTIVE EFFECT (Toxunanda hiss olunsun) --- */
+        .cta-button:active {
+            transform: scale(0.95); /* Düymə basılanda yüngül kiçilir */
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
 
         /* --- SECTIONS --- */
@@ -320,9 +328,9 @@
         .left-btn { margin-right: 10px; }
         .right-btn { margin-left: 10px; }
 
-        /* --- PARTNERS SECTION STYLES (YENİ) --- */
+        /* --- PARTNERS --- */
         #partners {
-            background-color: rgba(255, 255, 255, 0.6); /* Yüngül fon */
+            background-color: rgba(255, 255, 255, 0.6); 
             border-top: 1px solid rgba(0,0,0,0.05);
             padding: 60px 0;
             backdrop-filter: blur(5px);
@@ -333,35 +341,33 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 40px; /* Logolar arası məsafə */
+            gap: 40px; 
         }
 
         .partner-item {
-            width: 130px; /* Standart genişlik */
-            height: 90px; /* Standart hündürlük */
+            width: 130px; 
+            height: 90px; 
             display: flex;
             justify-content: center;
             align-items: center;
             transition: all 0.4s ease;
-            filter: grayscale(100%) opacity(0.7); /* Ağ-qara və biraz solğun */
+            filter: grayscale(100%) opacity(0.7); 
             position: relative;
         }
 
         .partner-item img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* Şəkli qutuya sığdırır, kəsmir */
+            object-fit: contain; 
             transition: 0.4s;
-            mix-blend-mode: multiply; /* Ağ fonları təmizləyir */
+            mix-blend-mode: multiply; 
         }
 
-        /* Hover effekti - Üstünə gələndə rənglənir */
         .partner-item:hover {
-            filter: grayscale(0%) opacity(1); /* Rəngi qaytarır */
-            transform: scale(1.1); /* Bir az böyüyür */
+            filter: grayscale(0%) opacity(1); 
+            transform: scale(1.1); 
         }
 
-        /* Mobil üçün uyğunlaşdırma */
         @media (max-width: 768px) {
             .partners-grid {
                 gap: 20px;
@@ -401,8 +407,11 @@
 
             .contact-actions { gap: 5px; padding: 0 5px; }
             .contact-actions .cta-button {
-                padding: 0 15px; font-size: 14px; height: 50px;
+                padding: 0 10px; /* Padding-i biraz azaltdim */
+                font-size: 13px; /* Şrifti biraz kiçiltdim */
+                height: 50px;
                 display: flex; align-items: center; flex: 1; justify-content: center;
+                white-space: nowrap; /* Mütləq bir sətirdə qalsın */
             }
         }
     </style>
